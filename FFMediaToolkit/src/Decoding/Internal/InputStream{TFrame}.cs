@@ -122,7 +122,9 @@
 
             var ptr = CodecPointer;
             ffmpeg.avcodec_close(ptr);
-            ffmpeg.avcodec_free_context(&ptr);
+
+            // This is already freed by InputContainer's pointer in its own InputContainer.OnDisposing()...
+            //ffmpeg.avcodec_free_context(&ptr);
         }
 
         private void ReadNextFrame()
